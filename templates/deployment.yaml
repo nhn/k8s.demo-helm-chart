@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+      version: {{ .Values.app.version }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+        version: {{ .Values.app.version }}
+    spec:
+      imagePullSecrets:
+      - name: {{ .Values.registry.secret }}
+      containers:
+      - name: {{ .Values.app.container.name }}
+        image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
+        {{- with .Values.app.resources }}
+        resources:
+{{ toYaml . | indent 10}}
+        {{- end }}
+        {{- with .Values.app.readiness }}
+        readinessProbe:
+{{ toYaml . | indent 10}}
+        {{- end }}
+        {{- with .Values.app.liveness }}
+        livenessProbe:
+{{ toYaml . | indent 10}}
+        {{- end }}
+        ports:
+        - containerPort: {{ .Values.app.container.port  }}

@@ -1,0 +1,33 @@
+app:
+  namespace: demo
+  name: demo
+  replicaCount: 1
+  image: aa009338-kr1-registry.container.cloud.toast.com/demo-app
+  tag: ff97a042
+  version: "dev"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+  readiness:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 30
+  liveness:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 30
+  container:
+    name: "java-container"
+    port: 8080
+registry:
+  secret: "regcred"
+service:
+  port: 80
+  targetPort: 8080
+  type: LoadBalancer
