@@ -17,11 +17,12 @@
 #### Toast 쿠버네티스 사용하여 서비스 할수 있는 예제 어플리케이션 입니다.
 
 </br>
-
-<img src="https://api-storage.cloud.toast.com/v1/AUTH_1d1d69bb458e4b73b57f25ad339f5067/k8s-guide/screen10.png" alt="helm" width="1000" />
+* Helm 사용 프로세스
+<img src="https://api-storage.cloud.toast.com/v1/AUTH_371144fc92db44ad910835313895529f/k8s-guide/helm1.png" alt="helm" width="1000" />
 </br>
 </br>
-<img src="https://api-storage.cloud.toast.com/v1/AUTH_1d1d69bb458e4b73b57f25ad339f5067/k8s-guide/screen11.png" alt="helm" width="1000" />
+* ArgoCD를 통한 배포
+<img src="https://api-storage.cloud.toast.com/v1/AUTH_371144fc92db44ad910835313895529f/k8s-guide/helm2.png" alt="helm" width="1000" />
 
 
 ## 📦 Java-Demo-Application
